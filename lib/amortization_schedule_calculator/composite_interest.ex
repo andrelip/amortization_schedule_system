@@ -1,26 +1,23 @@
 defmodule AmortizationScheduleCalculator.CompositeInterest do
-  alias AmortizationScheduleCalculator, as: ASM
-
   @moduledoc """
   This protocol defines the functions used to calculate composite interest.
   """
+  alias AmortizationScheduleCalculator, as: ASM
 
   @doc """
   Calculates the monthly payment given the amount, interest rate and term in months.
 
   ## Examples
 
-      iex> CompositeInterest.get_monthly_payment(Decimal.new(100000), Decimal.new(0.06), 360)
+      iex> CompositeInterest.get_monthly_payment(Decimal.new(100000), Decimal.new(0.005), 360)
       #Decimal<599.5505251527523945914612435>
 
   """
   @spec get_monthly_payment(ASM.loan_amount(), ASM.annual_interest_rate(), ASM.term_in_months()) ::
           ASM.monthly_payment()
-  def get_monthly_payment(loan_amount_or_mortage_amount, annual_interest_rate, term_in_months) do
-    monthly_interest_rate = Decimal.div(annual_interest_rate, 12)
+  def get_monthly_payment(loan_amount_or_mortage_amount, monthly_interest_rate, term_in_months) do
     eir = effective_interest_rate(term_in_months, monthly_interest_rate)
 
-    # loan_amount_or_mortage_amount * eir * monthly_interest_rate / (eir - 1)
     loan_amount_or_mortage_amount
     |> Decimal.mult(eir)
     |> Decimal.mult(monthly_interest_rate)
