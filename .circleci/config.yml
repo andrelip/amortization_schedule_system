@@ -1,0 +1,16 @@
+version: 2.0
+jobs:
+  build:
+		docker:
+			- image: circleci/elixir:1.6.6
+		working_directory: ~/amortization_system
+		steps:
+			- checkout
+			- run: mix local.rebar --force
+			- run: mix local.hex --force
+			- run: mix deps.get
+			- run: compile --warnings-as-error
+			- run: mix test
+			- run: mix credo --strict
+			- run: mix dialyzer
+			- run: mix compile
