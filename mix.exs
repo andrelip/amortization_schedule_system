@@ -21,7 +21,8 @@ defmodule AmortizationScheduleCalculator.MixProject do
     [
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
       {:credo, "~> 0.10.0", only: [:dev, :test], runtime: false},
-      {:decimal, "~> 1.0"}
+      {:decimal, "~> 1.0"},
+      {:timex, "~> 3.1"}
     ]
   end
 end
