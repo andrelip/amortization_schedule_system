@@ -19,7 +19,7 @@ defmodule AmortizationScheduleCalculator do
 
   ## Examples
 
-      iex> AmortizationScheduleCalculator.run(Timex.parse!("10/02/2018", "%m/%d/%Y", :strftime) |> Timex.to_date, Decimal.new(100000), Decimal.new(0.005), 360) |> List.last
+      iex> AmortizationScheduleCalculator.run(Timex.parse!("10/02/2018", "%m/%d/%Y", :strftime) |> Timex.to_date, Decimal.new(100000), Decimal.new(0.06), 360) |> List.last
       %AmortizationScheduleCalculator.ScheduleLine{
              interest: Decimal.new("2.982838433595783057668961548"),
              loan_amount: Decimal.new("0"),
@@ -33,9 +33,11 @@ defmodule AmortizationScheduleCalculator do
            }
 
   """
-  @spec run(start_date(), loan_amount(), monthly_interest_rate(), term_in_months()) ::
+  @spec run(start_date(), loan_amount(), annual_interest_rate(), term_in_months()) ::
           list(%ScheduleLine{})
-  def run(start_date, loan_amount, monthly_interest_rate, term_in_months) do
+  def run(start_date, loan_amount, annual_interest_rate, term_in_months) do
+    monthly_interest_rate = Decimal.div(annual_interest_rate, 12)
+
     monthly_payment =
       CompositeInterest.get_monthly_payment(
         loan_amount,

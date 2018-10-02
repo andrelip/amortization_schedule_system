@@ -21,7 +21,7 @@ defmodule AmortizationScheduleCalculator.ScheduleLine do
     nil
   end
 
-  def calculate_line(%__MODULE__{pay_off_achieved: true} = sl, _, _, _) do
+  def calculate_line(%__MODULE__{pay_off_achieved: true} = _, _, _, _) do
     nil
   end
 
