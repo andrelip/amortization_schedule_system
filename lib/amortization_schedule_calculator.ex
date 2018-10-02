@@ -1,18 +1,12 @@
 defmodule AmortizationScheduleCalculator do
   @moduledoc """
-  Documentation for AmortizationScheduleCalculator.
+  A library created to calcute Amortization Schedule
   """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> AmortizationScheduleCalculator.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  @type loan_amount :: Decimal.t()
+  @type annual_interest_rate :: Decimal.t()
+  @type monthly_interest_rate :: Decimal.t()
+  @type effective_interest_rate :: Decimal.t()
+  @type term_in_months :: integer()
+  @type monthly_payment :: Decimal.t()
 end

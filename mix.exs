@@ -20,7 +20,8 @@ defmodule AmortizationScheduleCalculator.MixProject do
   defp deps do
     [
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
-      {:credo, "~> 0.10.0", only: [:dev, :test], runtime: false}
+      {:credo, "~> 0.10.0", only: [:dev, :test], runtime: false},
+      {:decimal, "~> 1.0"}
     ]
   end
 end
