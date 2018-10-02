@@ -36,7 +36,7 @@ defmodule AmortizationScheduleCalculator do
   @spec run(start_date(), loan_amount(), annual_interest_rate(), term_in_months()) ::
           list(%ScheduleLine{})
   def run(start_date, loan_amount, annual_interest_rate, term_in_months) do
-    monthly_interest_rate = Decimal.div(annual_interest_rate, 12)
+    monthly_interest_rate = Money.div!(annual_interest_rate, 12)
 
     monthly_payment =
       CompositeInterest.get_monthly_payment(

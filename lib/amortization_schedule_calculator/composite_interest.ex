@@ -19,9 +19,9 @@ defmodule AmortizationScheduleCalculator.CompositeInterest do
     eir = effective_interest_rate(term_in_months, monthly_interest_rate)
 
     loan_amount_or_mortage_amount
-    |> Decimal.mult(eir)
-    |> Decimal.mult(monthly_interest_rate)
-    |> Decimal.div(Decimal.sub(eir, 1))
+    |> Money.mult!(eir)
+    |> Money.mult!(monthly_interest_rate)
+    |> Money.div!(Decimal.sub(eir, 1))
   end
 
   @doc """
@@ -37,7 +37,7 @@ defmodule AmortizationScheduleCalculator.CompositeInterest do
           ASM.effective_interest_rate()
   def effective_interest_rate(term_in_months, monthly_interest_rate) do
     Enum.reduce(1..term_in_months, Decimal.new("1"), fn _, acc ->
-      Decimal.mult(acc, Decimal.add(monthly_interest_rate, 1))
+      Money.mult!(acc, Decimal.add(monthly_interest_rate, 1))
     end)
   end
 end
