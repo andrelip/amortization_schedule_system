@@ -15,6 +15,6 @@ defmodule AmortizationScheduleCalculator.CompositeInterestTest do
 
   test "calculates monthly payment" do
     assert CompositeInterest.get_monthly_payment(@loan_amount, @monthly_interest_rate, 360) ==
-             Money.new(:usd, "599.5505251527523945914612435")
+             Money.new(:usd, "599.55")
   end
 end

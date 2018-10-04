@@ -5,7 +5,7 @@ defmodule AmortizationScheduleCalculator.ScheduleLineTest do
 
   doctest AmortizationScheduleCalculator.ScheduleLine
 
-  @monthly_payment Money.new(:usd, "599.5505251527523945914612435")
+  @monthly_payment Money.new(:usd, "599.55")
   @monthly_interest_rate D.new("0.005")
 
   test "calculate schedule line" do
@@ -25,24 +25,24 @@ defmodule AmortizationScheduleCalculator.ScheduleLineTest do
 
     assert month1 == %ScheduleLine{
              month: ~D[2018-11-02],
-             interest: Money.new(:usd, "500.000"),
-             loan_amount: Money.new(:usd, "99900.44947484724760540853876"),
-             principal: Money.new(:usd, "99.5505251527523945914612435"),
-             total_interest_paid: Money.new(:usd, "500.000"),
-             total_payment: Money.new(:usd, "599.5505251527523945914612435"),
-             total_principal_paid: Money.new(:usd, "99.5505251527523945914612435"),
+             interest: Money.new(:usd, "500.00"),
+             loan_amount: Money.new(:usd, "99900.45"),
+             principal: Money.new(:usd, "99.55"),
+             total_interest_paid: Money.new(:usd, "500.00"),
+             total_payment: Money.new(:usd, "599.55"),
+             total_principal_paid: Money.new(:usd, "99.55"),
              pay_off_achieved: false,
              monthly_extra_payment: Money.new(:usd, "0")
            }
 
     assert month2 == %AmortizationScheduleCalculator.ScheduleLine{
              month: ~D[2018-12-02],
-             interest: Money.new(:usd, "499.5022473742362380270426938"),
-             loan_amount: Money.new(:usd, "99800.40119706873144884412021"),
-             principal: Money.new(:usd, "100.0482777785161565644185497"),
-             total_interest_paid: Money.new(:usd, "999.5022473742362380270426938"),
-             total_payment: Money.new(:usd, "599.5505251527523945914612435"),
-             total_principal_paid: Money.new(:usd, "199.5988029312685511558797932"),
+             interest: Money.new(:usd, "499.50"),
+             loan_amount: Money.new(:usd, "99800.40"),
+             principal: Money.new(:usd, "100.05"),
+             total_interest_paid: Money.new(:usd, "999.50"),
+             total_payment: Money.new(:usd, "599.55"),
+             total_principal_paid: Money.new(:usd, "199.60"),
              pay_off_achieved: false,
              monthly_extra_payment: Money.new(:usd, "0")
            }

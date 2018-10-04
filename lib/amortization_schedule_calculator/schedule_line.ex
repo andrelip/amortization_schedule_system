@@ -15,8 +15,6 @@ defmodule AmortizationScheduleCalculator.ScheduleLine do
     :pay_off_achieved
   ])
 
-  alias Decimal, as: D
-
   def calculate_line(nil, _, _, _) do
     nil
   end
@@ -38,8 +36,8 @@ defmodule AmortizationScheduleCalculator.ScheduleLine do
     total_payment =
       calculate_total_payment(monthly_payment, monthly_extra_payment, one_time_payment)
 
-    interest = Money.mult!(sl.loan_amount, monthly_interest_rate)
-    principal = Money.sub!(total_payment, interest)
+    interest = sl.loan_amount |> Money.mult!(monthly_interest_rate) |> Money.round()
+    principal = total_payment |> Money.sub!(interest) |> Money.round()
     total_interest_paid = Money.add!(sl.total_interest_paid, interest)
     total_principal_paid = Money.add!(sl.total_principal_paid, principal)
     loan_amount = Money.sub!(sl.loan_amount, principal)
@@ -56,8 +54,8 @@ defmodule AmortizationScheduleCalculator.ScheduleLine do
       if Money.cmp!(minimum_chargeable, Money.new(:usd, 0)) == :lt ||
            Money.equal?(minimum_chargeable, Money.new(:usd, 0)) do
         # reduces total_payment
-        new_total_payment = total_payment = Money.add!(total_payment, loan_amount)
-        new_principal = Money.sub!(total_payment, interest)
+        new_total_payment = total_payment = total_payment |> Money.add!(loan_amount)
+        new_principal = total_payment |> Money.sub!(interest) |> Money.round()
         new_total_principal_paid = Money.add!(total_principal_paid, loan_amount)
         new_pay_off_achieved = true
         new_loan_amount = Money.new(:usd, "0")

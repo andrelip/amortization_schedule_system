@@ -26,20 +26,21 @@ iex> loan = Money.new(:usd, 100000)
 iex> rate = Decimal.new(0.06)
 iex> term_in_months = 360
 iex> %AmortizationScheduleCalculator{loan_amount: loan, annual_interest_rate: rate, start_date: start, term_in_months: 360}
-|> AmortizationScheduleCalculator.run
-|> List.last
+  |> AmortizationScheduleCalculator.run
+  |> List.last
+  
 %AmortizationScheduleCalculator.ScheduleLine{
-        interest: Money.new(:USD, "2.982838433595783057668961548"),
-        loan_amount: Money.new(:USD, "2.75E-23"),
-        month: ~D[2048-10-01],
-        monthly_extra_payment: Money.new(:USD, "0"),
-        one_time_payments: nil,
-        pay_off_achieved: false,
-        principal: Money.new(:USD, "596.5676867191566115337922820"),
-        total_interest_paid: Money.new(:USD, "115838.1890549908620529260479"),
-        total_payment: Money.new(:USD, "599.5505251527523945914612435"),
-        total_principal_paid: Money.new(:USD, "99999.99999999999999999999997")
-    }
+  interest: #Money<:USD, 2.99>,
+  loan_amount: #Money<:USD, 0.45>,
+  month: ~D[2048-10-01],
+  monthly_extra_payment: #Money<:USD, 0>,
+  one_time_payments: nil,
+  pay_off_achieved: false,
+  principal: #Money<:USD, 596.56>,
+  total_interest_paid: #Money<:USD, 115838.45>,
+  total_payment: #Money<:USD, 599.55>,
+  total_principal_paid: #Money<:USD, 99999.55>
+}
 ```
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)

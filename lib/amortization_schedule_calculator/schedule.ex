@@ -13,7 +13,6 @@ defmodule AmortizationScheduleCalculator.Schedule do
   ])
 
   alias AmortizationScheduleCalculator.ScheduleLine
-  alias Decimal, as: D
 
   @doc """
   Populates and show the amortization schedule

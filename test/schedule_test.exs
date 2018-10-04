@@ -5,7 +5,7 @@ defmodule AmortizationScheduleCalculator.ScheduleTest do
 
   doctest AmortizationScheduleCalculator.Schedule
 
-  @monthly_payment Money.new(:usd, "599.5505251527523945914612435")
+  @monthly_payment Money.new(:usd, "599.55")
   @monthly_interest_rate D.new("0.005")
   @start_date Timex.parse!("10/02/2018", "%m/%d/%Y", :strftime) |> Timex.to_date()
   @initial_params %Schedule{
@@ -20,13 +20,13 @@ defmodule AmortizationScheduleCalculator.ScheduleTest do
     schedule = Schedule.list(@initial_params)
 
     assert schedule |> List.last() == %AmortizationScheduleCalculator.ScheduleLine{
-             interest: Money.new(:usd, "2.982838433595783057668961548"),
-             loan_amount: Money.new(:usd, "2.75E-23"),
+             interest: Money.new(:usd, "2.99"),
+             loan_amount: Money.new(:usd, "0.45"),
              month: ~D[2048-10-01],
-             principal: Money.new(:usd, "596.5676867191566115337922820"),
-             total_principal_paid: Money.new(:usd, "99999.99999999999999999999997"),
-             total_interest_paid: Money.new(:usd, "115838.1890549908620529260479"),
-             total_payment: Money.new(:usd, "599.5505251527523945914612435"),
+             principal: Money.new(:usd, "596.56"),
+             total_principal_paid: Money.new(:usd, "99999.55"),
+             total_interest_paid: Money.new(:usd, "115838.45"),
+             total_payment: Money.new(:usd, "599.55"),
              pay_off_achieved: false,
              monthly_extra_payment: Money.new(:usd, "0")
            }
@@ -38,13 +38,13 @@ defmodule AmortizationScheduleCalculator.ScheduleTest do
     schedule = Schedule.list(initial_params)
 
     assert schedule |> List.last() == %AmortizationScheduleCalculator.ScheduleLine{
-             interest: Money.new(:usd, "1.745044823232865517053994662"),
+             interest: Money.new(:usd, "1.75"),
              loan_amount: Money.new(:usd, "0"),
              month: ~D[2039-10-01],
-             principal: Money.new(:usd, "349.0089646465731034107989324"),
-             total_principal_paid: Money.new(:usd, "99999.99999999999999999999998"),
-             total_interest_paid: Money.new(:usd, "75937.93582281065701138462501"),
-             total_payment: Money.new(:usd, "350.7540094698059689278529271"),
+             principal: Money.new(:usd, "349.24"),
+             total_principal_paid: Money.new(:usd, "100000.00"),
+             total_interest_paid: Money.new(:usd, "75938.04"),
+             total_payment: Money.new(:usd, "350.99"),
              pay_off_achieved: true,
              monthly_extra_payment: Money.new(:usd, "100")
            }
@@ -58,13 +58,13 @@ defmodule AmortizationScheduleCalculator.ScheduleTest do
     schedule = Schedule.list(initial_params)
 
     assert schedule |> List.last() == %AmortizationScheduleCalculator.ScheduleLine{
-             interest: Money.new(:usd, "1.384523366159364367054500658"),
+             interest: Money.new(:usd, "1.39"),
              loan_amount: Money.new(:usd, "0"),
              month: ~D[2048-10-01],
-             principal: Money.new(:usd, "276.9046732318728734109001316"),
-             total_principal_paid: Money.new(:usd, "99999.99999999999999999999999"),
-             total_interest_paid: Money.new(:usd, "115616.9277264361418961125412"),
-             total_payment: Money.new(:usd, "278.2891965980322377779546323"),
+             principal: Money.new(:usd, "277.32"),
+             total_principal_paid: Money.new(:usd, "100000.00"),
+             total_interest_paid: Money.new(:usd, "115617.16"),
+             total_payment: Money.new(:usd, "278.71"),
              pay_off_achieved: true,
              monthly_extra_payment: Money.new(:usd, "0")
            }
