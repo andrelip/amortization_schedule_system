@@ -9,8 +9,8 @@ defmodule AmortizationScheduleCalculator.CompositeInterest do
 
   ## Examples
 
-      iex> CompositeInterest.get_monthly_payment(Decimal.new(100000), Decimal.new(0.005), 360)
-      #Decimal<599.5505251527523945914612435>
+      iex> CompositeInterest.get_monthly_payment(Money.new(:usd, 100000), Decimal.new(0.005), 360)
+      #Money<:USD, 599.5505251527523945914612435>
 
   """
   @spec get_monthly_payment(ASM.loan_amount(), ASM.annual_interest_rate(), ASM.term_in_months()) ::
@@ -37,7 +37,7 @@ defmodule AmortizationScheduleCalculator.CompositeInterest do
           ASM.effective_interest_rate()
   def effective_interest_rate(term_in_months, monthly_interest_rate) do
     Enum.reduce(1..term_in_months, Decimal.new("1"), fn _, acc ->
-      Money.mult!(acc, Decimal.add(monthly_interest_rate, 1))
+      Decimal.mult(acc, Decimal.add(monthly_interest_rate, 1))
     end)
   end
 end

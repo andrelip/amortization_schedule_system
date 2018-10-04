@@ -32,29 +32,35 @@ defmodule AmortizationScheduleCalculator.ScheduleLine do
         one_time_payments
       ) do
     pay_off_achieved = false
-    monthly_extra_payment = sl.monthly_extra_payment || D.new("0")
-    one_time_payment = one_time_payments[sl.month] || D.new("0")
+    monthly_extra_payment = sl.monthly_extra_payment || Money.new(:usd, "0")
+    one_time_payment = one_time_payments[sl.month] || Money.new(:usd, "0")
 
     total_payment =
       calculate_total_payment(monthly_payment, monthly_extra_payment, one_time_payment)
 
-    interest = D.mult(sl.loan_amount, monthly_interest_rate)
-    principal = D.sub(total_payment, interest)
-    total_interest_paid = D.add(sl.total_interest_paid, interest)
-    total_principal_paid = D.add(sl.total_principal_paid, principal)
-    loan_amount = D.sub(sl.loan_amount, principal)
+    interest = Money.mult!(sl.loan_amount, monthly_interest_rate)
+    principal = Money.sub!(total_payment, interest)
+    total_interest_paid = Money.add!(sl.total_interest_paid, interest)
+    total_principal_paid = Money.add!(sl.total_principal_paid, principal)
+    loan_amount = Money.sub!(sl.loan_amount, principal)
 
-    minimum_chargeable = loan_amount |> D.mult(100) |> D.round() |> D.div(100)
+    minimum_chargeable = loan_amount |> Money.mult!(100) |> Money.div!(100)
+
+    # IO.inspect(
+    #   {minimum_chargeable, Money.cmp!(minimum_chargeable, Money.new(:usd, 0)) == :lt,
+    #    Money.equal?(minimum_chargeable, 0)}
+    # )
 
     {final_total_payment, final_principal, final_total_principal_paid, final_pay_off_achieved,
      final_loan_amount} =
-      if D.cmp(minimum_chargeable, 0) == :lt || D.equal?(minimum_chargeable, 0) do
+      if Money.cmp!(minimum_chargeable, Money.new(:usd, 0)) == :lt ||
+           Money.equal?(minimum_chargeable, Money.new(:usd, 0)) do
         # reduces total_payment
-        new_total_payment = total_payment = D.add(total_payment, loan_amount)
-        new_principal = D.sub(total_payment, interest)
-        new_total_principal_paid = D.add(total_principal_paid, loan_amount)
+        new_total_payment = total_payment = Money.add!(total_payment, loan_amount)
+        new_principal = Money.sub!(total_payment, interest)
+        new_total_principal_paid = Money.add!(total_principal_paid, loan_amount)
         new_pay_off_achieved = true
-        new_loan_amount = D.new("0")
+        new_loan_amount = Money.new(:usd, "0")
 
         {new_total_payment, new_principal, new_total_principal_paid, new_pay_off_achieved,
          new_loan_amount}
@@ -77,7 +83,7 @@ defmodule AmortizationScheduleCalculator.ScheduleLine do
 
   def calculate_total_payment(monthly_payment, monthly_extra_payment, one_time_payment) do
     monthly_payment
-    |> Decimal.add(monthly_extra_payment)
-    |> Decimal.add(one_time_payment)
+    |> Money.add!(monthly_extra_payment)
+    |> Money.add!(one_time_payment)
   end
 end
