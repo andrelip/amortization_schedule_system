@@ -13,7 +13,7 @@ by adding `amortization_schedule_calculator` to your list of dependencies in `mi
 ```elixir
 def deps do
   [
-    {:amortization_schedule_calculator, "~> 0.1.0"}
+    {:amortization_schedule_calculator, "~> 0.0.1"}
   ]
 end
 ```
