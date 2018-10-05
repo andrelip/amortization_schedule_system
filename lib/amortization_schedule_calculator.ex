@@ -1,6 +1,6 @@
 defmodule AmortizationScheduleCalculator do
   @moduledoc """
-  A library created to calcute Amortization Schedule
+  A library created to calculate a loan amortization schedule.
   """
   alias AmortizationScheduleCalculator.CompositeInterest
   alias AmortizationScheduleCalculator.Schedule

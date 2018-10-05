@@ -1,7 +1,7 @@
 # AmortizationScheduleCalculator
 
 Simple library to generate an Amortization Schedule for periodic payments or installments. 
-Use this table can show you how much will go toward the principal and how much will go toward the interest
+Using this table can can show you how much will go toward the principal and how much will go toward the interest
 
 [![CircleCI](https://circleci.com/gh/andrelip/amortization_schedule_system/tree/master.svg?style=svg)](https://circleci.com/gh/andrelip/amortization_schedule_system/tree/master)
 

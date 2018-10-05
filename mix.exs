@@ -31,7 +31,7 @@ defmodule AmortizationScheduleCalculator.MixProject do
   defp description do
     """
     Amortization Schedule generator for periodic payments or installments.
-    Use this table can show you how much will go toward the principal and how much will go toward the interest for each month.
+    Using this table can show you how much will go toward the principal and how much will go toward the interest for each month.
     """
   end
 

@@ -1,6 +1,6 @@
 defmodule AmortizationScheduleCalculator.Schedule do
   @moduledoc """
-  This module has functions that populates the schedule table
+  Functions that populate the schedule table
   """
   defstruct([
     :start_date,
