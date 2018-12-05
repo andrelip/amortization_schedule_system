@@ -9,7 +9,7 @@ defmodule AmortizationScheduleCalculator.CompositeInterest do
 
   ## Examples
 
-      iex> CompositeInterest.get_monthly_payment(Money.new(:usd, 100000), Decimal.new(0.005), 360)
+      iex> CompositeInterest.get_monthly_payment(Money.new(:usd, 100000), Decimal.from_float(0.005), 360)
       #Money<:USD, 599.55>
 
   """
@@ -30,7 +30,7 @@ defmodule AmortizationScheduleCalculator.CompositeInterest do
 
   ## Examples
 
-      iex> CompositeInterest.effective_interest_rate(360, Decimal.new(0.005))
+      iex> CompositeInterest.effective_interest_rate(360, Decimal.from_float(0.005))
       #Decimal<6.022575212263216184054046820>
 
   """

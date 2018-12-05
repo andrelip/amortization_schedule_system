@@ -40,7 +40,7 @@ defmodule AmortizationScheduleCalculator do
 
       iex> start = Timex.parse!("10/02/2018", "%m/%d/%Y", :strftime) |> Timex.to_date
       iex> loan = Money.new(:usd, 100000)
-      iex> rate = Decimal.new(0.06)
+      iex> rate = Decimal.from_float(0.06)
       iex> term_in_months = 360
       iex> %AmortizationScheduleCalculator{loan_amount: loan, annual_interest_rate: rate, start_date: start, term_in_months: term_in_months} |> AmortizationScheduleCalculator.run |> List.last
       %AmortizationScheduleCalculator.ScheduleLine{
