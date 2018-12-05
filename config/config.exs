@@ -28,3 +28,8 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+
+config :ex_money,
+  default_cldr_backend: AmortizationScheduleCalculator.Cldr,
+  default_locale: "en",
+  locales: ["en"]
