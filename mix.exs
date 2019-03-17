@@ -41,7 +41,7 @@ defmodule AmortizationScheduleCalculator.MixProject do
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
       {:decimal, "~> 1.6"},
       {:timex, "~> 3.4"},
-      {:ex_doc, "~> 0.19.0", only: :dev},
+      {:ex_doc, "~> 0.20.0", only: :dev},
       {:ex_money, "~> 3.0"}
     ]
   end
