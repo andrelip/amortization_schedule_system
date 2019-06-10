@@ -21,7 +21,8 @@ defmodule AmortizationScheduleCalculator.ScheduleTest do
 
     assert schedule |> List.last() == %AmortizationScheduleCalculator.ScheduleLine{
              interest: Money.new(:usd, "2.99"),
-             loan_amount: Money.new(:usd, "0.45"),
+             begin_balance: Money.new(:usd, "597.01"),
+             end_balance: Money.new(:usd, "0.45"),
              month: ~D[2048-10-01],
              principal: Money.new(:usd, "596.56"),
              total_principal_paid: Money.new(:usd, "99999.55"),
@@ -39,7 +40,8 @@ defmodule AmortizationScheduleCalculator.ScheduleTest do
 
     assert schedule |> List.last() == %AmortizationScheduleCalculator.ScheduleLine{
              interest: Money.new(:usd, "1.75"),
-             loan_amount: Money.new(:usd, "0"),
+             begin_balance: Money.new(:usd, "349.24"),
+             end_balance: Money.new(:usd, "0"),
              month: ~D[2039-10-01],
              principal: Money.new(:usd, "349.24"),
              total_principal_paid: Money.new(:usd, "100000.00"),
@@ -59,7 +61,8 @@ defmodule AmortizationScheduleCalculator.ScheduleTest do
 
     assert schedule |> List.last() == %AmortizationScheduleCalculator.ScheduleLine{
              interest: Money.new(:usd, "1.39"),
-             loan_amount: Money.new(:usd, "0"),
+             begin_balance: Money.new(:usd, "277.32"),
+             end_balance: Money.new(:usd, "0"),
              month: ~D[2048-10-01],
              principal: Money.new(:usd, "277.32"),
              total_principal_paid: Money.new(:usd, "100000.00"),

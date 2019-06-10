@@ -24,7 +24,8 @@ defmodule AmortizationScheduleCalculator.Schedule do
       %{
         month: first_month,
         total_interest_paid: Money.new(:usd, "0"),
-        total_principal_paid: Money.new(:usd, "0")
+        total_principal_paid: Money.new(:usd, "0"),
+        end_balance: params.loan_amount
       }
       |> Map.merge(params)
       |> Map.from_struct()
