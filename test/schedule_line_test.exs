@@ -13,7 +13,7 @@ defmodule AmortizationScheduleCalculator.ScheduleLineTest do
 
     initial_params = %ScheduleLine{
       month: start_date,
-      loan_amount: Money.new(:usd, "100000"),
+      end_balance: Money.new(:usd, "100000"),
       total_interest_paid: Money.new(:usd, "0"),
       total_principal_paid: Money.new(:usd, "0")
     }
@@ -26,7 +26,8 @@ defmodule AmortizationScheduleCalculator.ScheduleLineTest do
     assert month1 == %ScheduleLine{
              month: ~D[2018-11-02],
              interest: Money.new(:usd, "500.00"),
-             loan_amount: Money.new(:usd, "99900.45"),
+             begin_balance: Money.new(:usd, "100000"),
+             end_balance: Money.new(:usd, "99900.45"),
              principal: Money.new(:usd, "99.55"),
              total_interest_paid: Money.new(:usd, "500.00"),
              total_payment: Money.new(:usd, "599.55"),
@@ -38,7 +39,8 @@ defmodule AmortizationScheduleCalculator.ScheduleLineTest do
     assert month2 == %AmortizationScheduleCalculator.ScheduleLine{
              month: ~D[2018-12-02],
              interest: Money.new(:usd, "499.50"),
-             loan_amount: Money.new(:usd, "99800.40"),
+             begin_balance: Money.new(:usd, "99900.45"),
+             end_balance: Money.new(:usd, "99800.40"),
              principal: Money.new(:usd, "100.05"),
              total_interest_paid: Money.new(:usd, "999.50"),
              total_payment: Money.new(:usd, "599.55"),

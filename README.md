@@ -1,6 +1,6 @@
 # AmortizationScheduleCalculator
 
-Simple library to generate an Amortization Schedule for periodic payments or installments. 
+Simple library to generate an Amortization Schedule for periodic payments or installments.
 Using this table can can show you how much will go toward the principal and how much will go toward the interest
 
 [![CircleCI](https://circleci.com/gh/andrelip/amortization_schedule_system/tree/master.svg?style=svg)](https://circleci.com/gh/andrelip/amortization_schedule_system/tree/master)
@@ -28,10 +28,11 @@ iex> term_in_months = 360
 iex> %AmortizationScheduleCalculator{loan_amount: loan, annual_interest_rate: rate, start_date: start, term_in_months: 360}
   |> AmortizationScheduleCalculator.run
   |> List.last
-  
+
 %AmortizationScheduleCalculator.ScheduleLine{
   interest: #Money<:USD, 2.99>,
-  loan_amount: #Money<:USD, 0.45>,
+  begin_balance: #Money<:USD, 597.01>,
+  end_balance: #Money<:USD, 0.45>,
   month: ~D[2048-10-01],
   monthly_extra_payment: #Money<:USD, 0>,
   one_time_payments: nil,

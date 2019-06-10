@@ -45,7 +45,8 @@ defmodule AmortizationScheduleCalculator do
       iex> %AmortizationScheduleCalculator{loan_amount: loan, annual_interest_rate: rate, start_date: start, term_in_months: term_in_months} |> AmortizationScheduleCalculator.run |> List.last
       %AmortizationScheduleCalculator.ScheduleLine{
              interest: Money.new(:USD, "2.99"),
-             loan_amount: Money.new(:USD, "0.45"),
+             begin_balance: Money.new(:USD, "597.01"),
+             end_balance: Money.new(:USD, "0.45"),
              month: ~D[2048-10-01],
              monthly_extra_payment: Money.new(:USD, "0"),
              one_time_payments: nil,
