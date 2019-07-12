@@ -38,11 +38,11 @@ defmodule AmortizationScheduleCalculator.MixProject do
   defp deps do
     [
       {:dialyxir, "~> 0.5", only: [:dev, :test], runtime: false},
-      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.1", only: [:dev, :test], runtime: false},
       {:decimal, "~> 1.6"},
-      {:timex, "~> 3.4"},
+      {:timex, "~> 3.6"},
       {:ex_doc, "~> 0.20.0", only: :dev},
-      {:ex_money, "~> 3.0"}
+      {:ex_money, "~> 4.0"}
     ]
   end
 end
